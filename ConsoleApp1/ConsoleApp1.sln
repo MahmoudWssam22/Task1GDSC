@@ -1,25 +1,107 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.7.34202.233
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{FF634420-036D-4FC1-AB3B-89F227974BBE}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FF634420-036D-4FC1-AB3B-89F227974BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF634420-036D-4FC1-AB3B-89F227974BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF634420-036D-4FC1-AB3B-89F227974BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF634420-036D-4FC1-AB3B-89F227974BBE}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {50E29645-C38B-48A9-81EB-F3AA57727E2B}
-	EndGlobalSection
-EndGlobal
+using System.Security.Cryptography.X509Certificates;
+public class program
+{
+    public static void Main(string[] args)
+    {
+        string desegun;
+        Console.WriteLine("CHOSE USING SWITCH STATMENT OR UESING IF STATMENT");
+        Console.WriteLine("S:- FOR SWITCH STATMENT");
+        Console.WriteLine("F:- FOR IF STATMENT");
+        desegun = Console.ReadLine();
+
+
+        if (desegun=="s" || desegun == "S")
+        {
+            int x, y;
+            int res=0;
+            char op;
+
+            Console.WriteLine("enter the first number");
+            x = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("enter the oprator number");
+            op =char.Parse( Console.ReadLine());
+
+            Console.WriteLine("enter the second number");
+            y = Convert.ToInt32(Console.ReadLine());
+
+            Switch(ref x,ref y, op,  res);
+        }
+
+        else if (desegun=="f" || desegun=="F") 
+            If_Else();
+    }
+    public static void Switch(ref int x,ref int y, char op, int res)
+    {
+        switch (op)
+        {
+            case '+':
+                res = x + y;
+                Console.WriteLine("the Resoltes is: "+ res);
+                break;
+            case '-':
+                res = x - y;
+                Console.WriteLine("the Resoltes is: "+ res);
+                break;
+            case '*':
+                res = x * y;
+                Console.WriteLine("the Resoltes is: "+ res);
+                break;
+            case '/':
+                res = x / y;
+                Console.WriteLine("the Resoltes is: "+ res);
+                break;
+            default:
+                Console.WriteLine("THE OPRATOR YOU ENTERT IS WRONG");
+                Console.WriteLine("PLESE ENTER AN OPRATOR OF THE FOLLWING (+,-,*,/)");
+                break;
+        }
+    }
+    public static void If_Else()
+    {
+        int? x=0, y=0, res = 0;
+        char op;
+
+        Console.WriteLine("enter the first number");
+        x = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("enter the oprator number");
+        op = char.Parse(Console.ReadLine());
+
+        Console.WriteLine("enter the second number");
+        y = Convert.ToInt32(Console.ReadLine());
+
+        if (x.HasValue && y.HasValue)
+        {
+            if (op == '+')
+            {
+                res = x + y;
+                Console.WriteLine("the Resoltes is: " + res);
+            }
+
+            else if (op == '-')
+            {
+                res = x - y;
+                Console.WriteLine("the Resoltes is: " + res);
+            }
+            else if (op == '*')
+            {
+                res = x * y;
+                Console.WriteLine("the Resoltes is: " + res);
+            }
+            else if (op == '/')
+            {
+                res = x / y;
+                Console.WriteLine("the Resoltes is: " + res);
+            }
+            else
+            {
+                Console.WriteLine("THE OPRATOR YOU ENTERT IS WRONG");
+                Console.WriteLine("PLESE ENTER AN OPRATOR OF THE FOLLWING (+,-,*,/)");
+            }
+        }
+        else { Console.WriteLine("ONE OF THE VALUES YOU'VE ENTERT IS NULL ... PLEASE ENTER THE VALUES AGINE"); }
+    }
+}
+
+
